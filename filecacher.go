@@ -43,7 +43,7 @@ func (f *FileCacher) create(key, filename string) (file *File, err error) {
 
 func (f *FileCacher) get(key string) (file *File, err error) {
 	var ok bool
-	if file, ok = f.m[key]; !ok {
+	if file, ok = f.m[key]; !ok || file.closed.Get() {
 		err = ErrFileNotFound
 		return
 	}

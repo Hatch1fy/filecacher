@@ -12,17 +12,14 @@ import (
 
 func main() {
 	var (
-		f   *filecacher.File
 		err error
 	)
 
-	if f, err = filecacher.NewFile("./hello.txt"); err != nil {
-		log.Fatal(err)
-	}
+	f := filecacher.New("./")
 
 	for {
-		if err = f.Read(printReader); err != nil {
-			break
+		if err = f.Read("./hello.txt", printReader); err != nil {
+			log.Println("Error reading", err)
 		}
 
 		time.Sleep(time.Second * 3)

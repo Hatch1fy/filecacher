@@ -58,9 +58,15 @@ func (f *File) watch() {
 				return
 			}
 
-			if event.Op&fsnotify.Write == fsnotify.Write {
+			switch event.Op.String() {
+			case "REMOVE", "RENAME":
+				f.Close()
+				return
+
+			case "WRITE":
 				if err := f.refreshBuffer(); err != nil {
-					f.out.Error("Error refreshing file: %v", err)
+					f.Close()
+					return
 				}
 			}
 

@@ -74,7 +74,7 @@ func (f *FileCacher) Get(key string) (file *File, err error) {
 
 // GetOrCreate attempt to retrieve a file, if it does not exist - it will create it
 func (f *FileCacher) GetOrCreate(key string) (file *File, err error) {
-	if file, err = f.Get(key); err == nil {
+	if file, err = f.Get(key); err == nil && !file.closed.Get() {
 		return
 	}
 

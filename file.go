@@ -10,20 +10,12 @@ import (
 	"github.com/missionMeteora/journaler"
 
 	"github.com/Hatch1fy/errors"
-	"github.com/fsnotify/fsnotify"
+	"github.com/Hatch1fy/poller"
 )
 
 // NewFile will return a new file
 func NewFile(filename string) (fp *File, err error) {
 	var f File
-	if f.w, err = fsnotify.NewWatcher(); err != nil {
-		return
-	}
-
-	if err = f.w.Add(filename); err != nil {
-		return
-	}
-
 	f.out = journaler.New("FileCacher", filename)
 	f.b = bytes.NewBuffer(nil)
 	f.filename = filename
@@ -32,7 +24,11 @@ func NewFile(filename string) (fp *File, err error) {
 		return
 	}
 
-	go f.watch()
+	if f.p, err = poller.New(filename, f.onEvent); err != nil {
+		return
+	}
+
+	go f.p.Run(0)
 	fp = &f
 	return
 }
@@ -42,7 +38,7 @@ type File struct {
 	mu  sync.RWMutex
 	out *journaler.Journaler
 
-	w *fsnotify.Watcher
+	p *poller.Poller
 	b *bytes.Buffer
 
 	filename string
@@ -50,34 +46,15 @@ type File struct {
 	closed atoms.Bool
 }
 
-func (f *File) watch() {
-	for {
-		select {
-		case event, ok := <-f.w.Events:
-			if !ok {
-				return
-			}
-
-			switch event.Op.String() {
-			case "REMOVE", "RENAME":
-				f.Close()
-				return
-
-			case "WRITE":
-				if err := f.refreshBuffer(); err != nil {
-					f.Close()
-					return
-				}
-			}
-
-		case err, ok := <-f.w.Errors:
-			if !ok {
-				return
-			}
-
-			f.out.Error("Error event encountered: %v", err)
-			f.Close()
+func (f *File) onEvent(e poller.Event) {
+	switch e {
+	case poller.EventWrite:
+		if err := f.refreshBuffer(); err != nil {
+			f.out.Error("error refreshing buffer: %v", err)
+			return
 		}
+	case poller.EventRemove:
+		f.Close()
 	}
 }
 
@@ -119,5 +96,6 @@ func (f *File) Close() (err error) {
 		return errors.ErrIsClosed
 	}
 
-	return f.w.Close()
+	f.p.Close()
+	return
 }

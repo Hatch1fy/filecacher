@@ -64,6 +64,10 @@ func (f *File) refreshBuffer() (err error) {
 
 	var tgt *os.File
 	if tgt, err = os.Open(f.filename); err != nil {
+		if os.IsNotExist(err) {
+			err = ErrFileNotFound
+		}
+
 		return
 	}
 	defer tgt.Close()

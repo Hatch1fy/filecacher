@@ -29,7 +29,8 @@ type FileCacher struct {
 
 	m map[string]*File
 
-	root string
+	root   string
+	closed bool
 }
 
 func (f *FileCacher) create(key, filename string) (file *File, err error) {
@@ -56,6 +57,11 @@ func (f *FileCacher) New(key string) (file *File, err error) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 
+	if f.closed {
+		err = errors.ErrIsClosed
+		return
+	}
+
 	if file, err = f.get(key); err == nil {
 		return nil, ErrFileExists
 	}
@@ -68,6 +74,11 @@ func (f *FileCacher) New(key string) (file *File, err error) {
 func (f *FileCacher) Get(key string) (file *File, err error) {
 	f.mu.RLock()
 	defer f.mu.RUnlock()
+
+	if f.closed {
+		err = errors.ErrIsClosed
+		return
+	}
 
 	return f.get(key)
 }
@@ -96,6 +107,11 @@ func (f *FileCacher) Unmount(key string) (err error) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 
+	if f.closed {
+		err = errors.ErrIsClosed
+		return
+	}
+
 	var file *File
 	if file, err = f.get(key); err != nil {
 		return
@@ -103,5 +119,22 @@ func (f *FileCacher) Unmount(key string) (err error) {
 
 	delete(f.m, key)
 	file.Close()
+	return
+}
+
+// Close will close the file cacher
+func (f *FileCacher) Close() (err error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.closed {
+		return errors.ErrIsClosed
+	}
+
+	f.closed = true
+
+	for _, ff := range f.m {
+		ff.Close()
+	}
+
 	return
 }

@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/PathDNA/atoms"
-	"github.com/missionMeteora/journaler"
+	"github.com/hatchify/scribe"
 
 	"github.com/Hatch1fy/errors"
 	"github.com/Hatch1fy/poller"
@@ -16,7 +16,7 @@ import (
 // NewFile will return a new file
 func NewFile(filename string) (fp *File, err error) {
 	var f File
-	f.out = journaler.New("FileCacher", filename)
+	f.out = scribe.New("FileCacher :: " + filename)
 	f.b = bytes.NewBuffer(nil)
 	f.filename = filename
 
@@ -36,7 +36,7 @@ func NewFile(filename string) (fp *File, err error) {
 // File represents a file
 type File struct {
 	mu  sync.RWMutex
-	out *journaler.Journaler
+	out *scribe.Scribe
 
 	p *poller.Poller
 	b *bytes.Buffer
@@ -50,7 +50,7 @@ func (f *File) onEvent(e poller.Event) {
 	switch e {
 	case poller.EventWrite:
 		if err := f.refreshBuffer(); err != nil {
-			f.out.Error("error refreshing buffer: %v", err)
+			f.out.Errorf("error refreshing buffer: %v", err)
 			return
 		}
 	case poller.EventRemove:

@@ -6,7 +6,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/PathDNA/atoms"
+	"github.com/hatchify/atoms"
 	"github.com/hatchify/scribe"
 
 	"github.com/Hatch1fy/errors"

@@ -1,0 +1,12 @@
+github.com/Hatch1fy/cron v0.1.1 h1:Dgdm2c4JVYPS5hxS3qH8QgZ2fZAHo9GQkVOBl3rbzmA=
+github.com/Hatch1fy/cron v0.1.1/go.mod h1:ozAAsx1OeqvPGgg6tERA+MkQEwwpIZSyDvj2fKzNkhI=
+github.com/Hatch1fy/errors v0.1.0 h1:O0eV+wlv/uF++/IQFxPaTVQOCHxzEXFFX0cMrIs8GSs=
+github.com/Hatch1fy/errors v0.1.0/go.mod h1:ghvTU0wQ49AH7DcAfdKmWjBDjgEOoc1ltdPhDlGPz7w=
+github.com/Hatch1fy/poller v0.1.0 h1:jUDtzFVJPvA+U1asgeQvyb8wCTC1jRyQitb8ffnG3CM=
+github.com/Hatch1fy/poller v0.1.0/go.mod h1:kDG6zfjDbWPNM8ZQ74L5gfnu9L6HLgxB/IJPcbbTfS4=
+github.com/hatchify/atoms v0.1.0 h1:sAW587EvzFWPJHEZ5gT1pis6GiGTSCw5qQTcAtrHIB8=
+github.com/hatchify/atoms v0.1.0/go.mod h1:vUp4MrAgsAgCBu2YlTdyNJEXI2EjVb2EPHfSetCrzdw=
+github.com/hatchify/colors v0.1.0 h1:EOU0mKjn7ScTR7vjWq/lknv1XQQoLlkm0Nk0XTLqoVA=
+github.com/hatchify/colors v0.1.0/go.mod h1:t0952Ef1zDFMVTCkOwhrdJS9ToVWTdcJ3PWCHZADLuU=
+github.com/hatchify/scribe v0.1.2 h1:Y5sLp5uYsavKoo5h8BaOX4we9mYpi0acgYPRt81ziNk=
+github.com/hatchify/scribe v0.1.2/go.mod h1:5edr7Z5qp41ahKKgImyXBy1gn+evaSs5SuwQfY1r+eQ=

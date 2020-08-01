@@ -1,9 +1,10 @@
 github.com/Hatch1fy/cron v0.4.77 h1:VmORottzpTEA9gMITt0EUAaIupAYH4hMgXFAhz7APUY=
 github.com/Hatch1fy/cron v0.4.77/go.mod h1:qTM34B/bZEHUopeeyEIbvRGaZ9OcI0h5JfpLfI19rrU=
-github.com/Hatch1fy/errors v0.4.77 h1:0Z2S/nbd+hga+CydwpX5BonUVa338+XPkTSMeZSxhnU=
 github.com/Hatch1fy/errors v0.4.77/go.mod h1:LPnug0nWT7I99nYl62NfYjxNMCCEx3lBV5YWIco+H0w=
-github.com/Hatch1fy/poller v0.4.80 h1:rH7HbbaJwGWuZkZQz38xeVKOnzZRSkkKNfLiqDJZY/U=
-github.com/Hatch1fy/poller v0.4.80/go.mod h1:fgOghQ0AbbR2zCnHJs9Gf+iynybwfWHPSPjyxEpuQCc=
+github.com/Hatch1fy/errors v0.4.80 h1:LBr5Elytx6npBlF/36KTamC6I7h6VqkOVkRkbIdj3xY=
+github.com/Hatch1fy/errors v0.4.80/go.mod h1:SJFCeScmERvwtYMG7EU24Fe0KfXmiIs7tNlcIl0STKk=
+github.com/Hatch1fy/poller v0.4.84 h1:iItXW8RopJUJid/6R52FUn/nj0E8t+BcGDPTCdx+kAI=
+github.com/Hatch1fy/poller v0.4.84/go.mod h1:b56UUW93O9Z6Je0RXKdhersHsW0zqeaLCwX15ceWkj0=
 github.com/hatchify/atoms v0.4.77 h1:JGBaNULC3Kx8LiKvxkgcNxafM5P063soeoiKvTs+m/o=
 github.com/hatchify/atoms v0.4.77/go.mod h1:6H72BaBb4o7EHfkGXb3AriWU0S5CSrW1kDDHdjdeNB8=
 github.com/hatchify/colors v0.4.77 h1:wPtYLLPbsekeamTZzu71rZVsbq8P2ues1YDx7OsKAxU=

@@ -9,8 +9,8 @@ import (
 	"github.com/hatchify/atoms"
 	"github.com/hatchify/scribe"
 
-	"github.com/Hatch1fy/errors"
 	"github.com/Hatch1fy/poller"
+	"github.com/hatchify/errors"
 )
 
 // NewFile will return a new file

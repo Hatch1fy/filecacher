@@ -9,7 +9,7 @@ import (
 	"github.com/hatchify/atoms"
 	"github.com/hatchify/scribe"
 
-	"github.com/Hatch1fy/poller"
+	"github.com/hatchify/poller"
 	"github.com/hatchify/errors"
 )
 

@@ -6,10 +6,10 @@ import (
 	"os"
 	"sync"
 
-	"github.com/hatchify/atoms"
-	"github.com/hatchify/scribe"
+	"github.com/gdbu/atoms"
+	"github.com/gdbu/scribe"
 
-	"github.com/hatchify/poller"
+	"github.com/gdbu/poller"
 	"github.com/hatchify/errors"
 )
 

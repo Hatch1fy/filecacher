@@ -1,10 +1,10 @@
-module github.com/hatchify/filecacher
+module github.com/gdbu/filecacher
 
 go 1.14
 
 require (
-	github.com/hatchify/atoms v0.4.79
+	github.com/gdbu/atoms v1.0.1
+	github.com/gdbu/poller v0.4.92
+	github.com/gdbu/scribe v0.4.88
 	github.com/hatchify/errors v0.4.82
-	github.com/hatchify/poller v0.4.90
-	github.com/hatchify/scribe v0.4.87
 )

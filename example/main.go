@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/hatchify/filecacher"
+	"github.com/gdbu/filecacher"
 )
 
 func main() {
